@@ -32,18 +32,10 @@ public class User implements Serializable {
     @Column(nullable = false, length = 50)
     private String uuid;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
-
-    @PrePersist
-    public void setCreatedAt(){
-      createdAt = new Date();
+    public User(String name, String email, String phone) {
+        this.name=name;
+        this.email=email;
+        this.phone=phone;
     }
-    @PreUpdate
-    public void setUpdatedAt(){
-        updatedAt= new Date();
-    }
+
 }

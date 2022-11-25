@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    void deleteByEmail(String email);
     boolean existsByEmail(String email);
     Optional<User> findByEmail(String email);
     @Query(nativeQuery = true,value = "select * from  users  where name like %:question% or email like %:question%")

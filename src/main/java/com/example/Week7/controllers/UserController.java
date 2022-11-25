@@ -19,6 +19,12 @@ public class UserController {
         return userService.createUser(request);
     }
 
+
+    @DeleteMapping("/{email}")
+    public ApiResponse deleteUser(@PathVariable String email){
+        return userService.deleteUser(email);
+    }
+
     @GetMapping("/list")
     public ApiResponse findAllUsers(){
         return userService.findAllUsers();

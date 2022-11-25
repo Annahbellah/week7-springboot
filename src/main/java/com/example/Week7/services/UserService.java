@@ -36,12 +36,15 @@ public class UserService {
         newUser.setEmail(request.getEmail());
         newUser.setPassword(request.getPassword());
         newUser.setUuid(UUID.randomUUID().toString());
-        newUser.setCreatedAt(new Date()); // change this to auto generated in the entity
 
         User savedUser = userRepository.save(newUser);
         return responseManager.success(savedUser);
     }
 
+    public  ApiResponse deleteUser(String email){
+        userRepository.deleteByEmail(email);
+        return  responseManager.success("Deleted successfully");
+    }
     public  ApiResponse findAllUsers(){
         List<User> userList = userRepository.findAll();
         if(!userList.isEmpty())
